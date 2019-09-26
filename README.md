@@ -2,7 +2,7 @@
 
 <h1> Prerequisites </h1>
 
-<h3> A running instance of Minikube with an account on dockerhub is reequired </h3>
+<h3> A running instance of Minikube with an account on dockerhub is required </h3>
 
 Install minikube https://kubernetes.io/docs/tasks/tools/install-minikube/
 
