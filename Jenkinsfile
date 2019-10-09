@@ -13,5 +13,6 @@ node {
     stage("Linting") {
       echo 'Linting...'
       sh '/usr/bin/hlint blue/Dockerfile'
+      sh '/usr/bin/hlint green/Dockerfile'
     }
 }
