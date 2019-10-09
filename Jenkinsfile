@@ -2,7 +2,6 @@ node {
     def registry = 'bnair75/capstone-test'
     stage('Checking out git repo') {
       echo 'Checkout...'
-      dir('subDir')
       checkout scm
     }
     stage('Checking environment') {
