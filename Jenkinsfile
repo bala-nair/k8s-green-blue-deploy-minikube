@@ -12,6 +12,6 @@ node {
     }
     stage("Linting") {
       echo 'Linting...'
-      sh '/usr/bin/hlint Dockerfile'
+      sh '/usr/bin/hlint blue/Dockerfile'
     }
 }
