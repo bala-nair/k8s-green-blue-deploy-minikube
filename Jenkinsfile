@@ -1,6 +1,5 @@
 node {
-    def registry-blue = 'bnair75/capstone-blue'
-    def registry-green = 'bnair75/capstone-green'
+    def registry = 'bnair75/capstone-blue'
     stage('Checking out git repo') {
       echo 'Checkout...'
       checkout scm
@@ -20,18 +19,9 @@ node {
 	    echo 'Building Docker image blue...'
       withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	     	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-	     	sh "docker build -t ${registry-blue} ."
-	     	sh "docker tag ${registry-blue} ${registry-blue}"
-	     	sh "docker push ${registry-blue}"
-      }
-    }
-    stage('Building image green') {
-	    echo 'Building Docker image green...'
-      withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-	     	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-	     	sh "docker build -t ${registry-green} ."
-	     	sh "docker tag ${registry-green} ${registry-green}"
-	     	sh "docker push ${registry-green}"
+	     	sh "docker build -t ${registry} blue/."
+	     	sh "docker tag ${registry} ${registry}"
+	     	sh "docker push ${registry}"
       }
     }
 }
