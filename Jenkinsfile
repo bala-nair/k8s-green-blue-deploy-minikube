@@ -34,8 +34,8 @@ node {
 	     	sh "sudo docker push ${registry2}"
       }
     }
-    stage('Deploying to EKS') {
-      echo 'Deploying to AWS...'
+    stage('Deploying to AWS EKS') {
+      echo 'Deploying to AWS EKS...'
       dir ('./') {
         withAWS(credentials: 'aws.bnair', region: 'us-east-2') {
             sh "sudo aws eks --region us-east-2 update-kubeconfig --name bn-prod"
