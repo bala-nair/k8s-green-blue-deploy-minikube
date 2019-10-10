@@ -34,4 +34,17 @@ node {
 	     	sh "sudo docker push ${registry2}"
       }
     }
+    stage('Deploying to EKS') {
+      echo 'Deploying to AWS...'
+      dir ('./') {
+        withAWS(credentials: 'aws.bnair', region: 'us-east-2') {
+            sh "sudo aws eks --region us-east-2 update-kubeconfig --name bn-prod"
+            sh "kubectl apply -f blue/blue-controller.json"
+            sh "kubectl apply -f green/green-controller.json"
+            sh "kubectl apply -f ./blue-green-service.json"
+            sh "kubectl get nodes"
+            sh "kubectl get pods"
+        }
+      }
+    }
 }
