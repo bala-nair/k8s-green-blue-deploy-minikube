@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"blue",
-                  "image":"bnair75/testblueimage",
+                  "image":"bnair75/capstone-blue",
                   "ports":[
                      {
                         "name":"http-server",
