@@ -34,9 +34,8 @@ node {
 	     	sh "sudo docker push ${registry2}"
       }
     }
-    stage('Deploying to AWS EKS') {
-      echo 'Deploying to AWS EKS...'
-      sh "aws eks --region us-east-2 update-kubeconfig --name bn-prod"
+    stage('Deploying to Cloud PKS') {
+      echo 'Deploying to Cloud PKS...'
       sh "kubectl apply -f blue/blue-controller.json"
       sh "kubectl apply -f green/green-controller.json"
       sh "kubectl apply -f ./blue-green-service.json"
