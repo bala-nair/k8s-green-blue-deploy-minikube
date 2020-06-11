@@ -36,10 +36,10 @@ node {
     }
     stage('Deploying to Cloud PKS') {
       echo 'Deploying to Cloud PKS...'
-      sh "kubectl apply -f blue/blue-controller.json"
-      sh "kubectl apply -f green/green-controller.json"
-      sh "kubectl apply -f ./blue-green-service.json"
-      sh "kubectl get nodes"
-      sh "kubectl get pods"
+      sh "sudo kubectl apply -f blue/blue-controller.json"
+      sh "sudo kubectl apply -f green/green-controller.json"
+      sh "sudo kubectl apply -f ./blue-green-service.json"
+      sh "sudo kubectl get nodes"
+      sh "sudo kubectl get pods"
     }
 }
